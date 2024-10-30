@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, request
 from head_com.shell import run_shell_web
+from head_com.audio import play_audio
 import threading
 
 app = Flask(__name__)
@@ -10,6 +11,13 @@ server_thread = None
 @app.route('/')
 def index():
     return render_template("index.html") 
+
+@app.route('/send', methods=['POST'])
+def receive_input():
+    data = request.get_json()
+    input_value = data.get('input')
+    play_audio(input_value)
+    return jsonify({"status": "success"})
 
 def run_flask_app():
     app.run(port=PORT)

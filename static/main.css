@@ -1,3 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
 body{
-    background-color: black;
+    font-family: "Consolas", sans-serif;
+    color: #f5f5f5;
+    background-color: #14171f;
+    font-weight: bold;
 }
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+input,
+button{
+    border: none;
+    font-family: "Consolas", sans-serif;
+    color: #f5f5f5;
+    font-weight: bold;
+}
+
+input:focus,
+button:focus{outline: none;}
+
+input:focus{color: #1ab778;}
+
+.wqwww{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1c1f28;
+    padding: 20px;
+    height: 70%;
+    width: 60%;
+    color: #ffffffd0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.wsqwww{
+    position: relative;
+    text-align: center;
+    color: #1ab778;
+    font-size: 33px;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.uacas{
+    position: relative;
+    border-radius: 5px;
+    padding: 7px;
+    font-size: 18px;
+    color: #1ab778;
+    float: left;
+    margin-right: 20px;
+    background-color: #14171f;
+}
+
+.zsq{
+    position: relative;
+    border-radius: 5px;
+    border: solid 2px #ffffff00;
+    transition: all .3s;
+    padding: 7px;
+    font-size: 18px;
+    background-color: #14171f;
+    cursor: pointer;
+}
+
+.zsq:hover{
+    border: solid 2px #1ab778;
+    color: #1ab778;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.xxxxx{
+    height: calc(70% - 70px);
+    background-color: #14171f;
+    width: 100%;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    color: #1ab778;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#dddasx{padding: 15px;}
