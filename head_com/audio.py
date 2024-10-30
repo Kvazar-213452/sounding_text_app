@@ -9,13 +9,13 @@ def play_sound(file_path, output_device_index=None):
     sd.play(data, fs, device=output_device_index)
     sd.wait()
 
-def play_audio(text):
+def play_audio(text, index):
     tts = gTTS(text=text, lang='uk')
     
     audio_file = "output.mp3"
     tts.save(audio_file)
 
-    play_sound(audio_file, 6)
+    play_sound(audio_file, index)
 
     play_sound(audio_file)
 

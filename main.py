@@ -1,12 +1,15 @@
 from flask import Flask, render_template, jsonify, request
-from head_com.shell import run_shell_web
+from head_com.shell import run_shell_web, load_config, save_config
 from head_com.audio import play_audio
 import threading
 
 app = Flask(__name__)
 
-PORT = 4000
+config = load_config('config.json')
+
 server_thread = None
+PORT = config.get('port')
+config_path = '../config.json'
 
 @app.route('/')
 def index():
@@ -14,9 +17,34 @@ def index():
 
 @app.route('/send', methods=['POST'])
 def receive_input():
+    config = load_config(config_path)
+    index_audio = config.get('index_audio')
+
     data = request.get_json()
     input_value = data.get('input')
-    play_audio(input_value)
+
+    play_audio(input_value, index_audio)
+
+    return jsonify({"status": "success"})
+
+@app.route('/get_index', methods=['POST'])
+def get_data():
+    config = load_config(config_path)
+    index_audio = config.get('index_audio')
+
+    return jsonify({"index": index_audio})
+
+@app.route('/index_change', methods=['POST'])
+def index_change():
+    data = request.get_json()
+    input_value = data.get('input')
+
+    config = load_config(config_path)
+
+    config['index_audio'] = int(input_value)
+
+    save_config(config_path, config)
+
     return jsonify({"status": "success"})
 
 def run_flask_app():

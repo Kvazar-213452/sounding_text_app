@@ -1,5 +1,6 @@
 import subprocess
 import os
+import json
 
 def run_shell_web(port):
     os.chdir('core')
@@ -17,3 +18,12 @@ def run_shell_web(port):
     process.wait()
 
     os._exit(0)
+
+def load_config(file_path):
+    with open(file_path, 'r') as file:
+        config = json.load(file)
+    return config
+
+def save_config(file_path, config):
+    with open(file_path, 'w') as file:
+        json.dump(config, file, indent=4)
