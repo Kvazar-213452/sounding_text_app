@@ -19,11 +19,12 @@ def index():
 def receive_input():
     config = load_config(config_path)
     index_audio = config.get('index_audio')
+    lang = config.get('lang')
 
     data = request.get_json()
     input_value = data.get('input')
 
-    play_audio(input_value, index_audio)
+    play_audio(input_value, index_audio, lang)
 
     return jsonify({"status": "success"})
 
@@ -34,6 +35,13 @@ def get_data():
 
     return jsonify({"index": index_audio})
 
+@app.route('/get_lang', methods=['POST'])
+def get_data1():
+    config = load_config(config_path)
+    lang = config.get('lang')
+
+    return jsonify({"index": lang})
+
 @app.route('/index_change', methods=['POST'])
 def index_change():
     data = request.get_json()
@@ -42,6 +50,19 @@ def index_change():
     config = load_config(config_path)
 
     config['index_audio'] = int(input_value)
+
+    save_config(config_path, config)
+
+    return jsonify({"status": "success"})
+
+@app.route('/lang_change', methods=['POST'])
+def index_change1():
+    data = request.get_json()
+    input_value = data.get('input')
+
+    config = load_config(config_path)
+
+    config['lang'] = str(input_value)
 
     save_config(config_path, config)
 

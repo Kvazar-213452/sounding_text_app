@@ -1,4 +1,5 @@
 {
     "index_audio": 6,
-    "port": 4000
+    "port": 4000,
+    "lang": "en"
 }

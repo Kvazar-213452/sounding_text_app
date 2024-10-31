@@ -22,13 +22,25 @@ function ewcwe() {
         data: JSON.stringify({ input: "dd" }),
         contentType: 'application/json',
         success: function(response) {
-            $('.ccwefe').val(response['index']);
+            $('#ccwefe').val(response['index']);
+        }
+    });
+}
+
+function nfgerer() {
+    $.ajax({
+        url: '/get_lang',
+        type: 'POST',
+        data: JSON.stringify({ input: "dd" }),
+        contentType: 'application/json',
+        success: function(response) {
+            $('#dsefr').val(response['index']);
         }
     });
 }
 
 function vsvwe() {
-    let inputValue = $('.ccwefe').val();
+    let inputValue = $('#ccwefe').val();
 
     $.ajax({
         url: '/index_change',
@@ -38,6 +50,22 @@ function vsvwe() {
         success: function(response) {
             if (response['status'] === "success") {
                 $('#dddasx').append("edit index sound on " + inputValue + "<br><br>");
+            }
+        }
+    });
+}
+
+function vserwe3() {
+    let inputValue = $('#dsefr').val();
+
+    $.ajax({
+        url: '/lang_change',
+        type: 'POST',
+        data: JSON.stringify({ input: inputValue }),
+        contentType: 'application/json',
+        success: function(response) {
+            if (response['status'] === "success") {
+                $('#dddasx').append("edit lang sound on " + inputValue + "<br><br>");
             }
         }
     });
